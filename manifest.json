@@ -1,0 +1,34 @@
+{
+  "name": "Little more brilliant",
+  "version": "0.0.1",
+  "manifest_version": 3,
+  "description": "*Unofficial* Chrome Extension for feelcycle",
+  "icons": {
+    "128": "img/little-more-brilliant.png"
+  },
+  "permissions": [
+    "webRequest"
+  ],
+  "host_permissions": [
+    "https://m.feelcycle.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://m.feelcycle.com/*"
+      ],
+      "run_at": "document_start",
+      "js": [
+        "third-party/jquery-3.6.0.min.js",
+        "src/feelcycle_api.js",
+        "src/studio_view_hook.js"
+      ]
+    }
+  ],
+  "background": {
+    "matches": [
+      "https://m.feelcycle.com/*"
+    ],
+    "service_worker": "src/background.js"
+  }
+}
